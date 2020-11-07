@@ -1,0 +1,88 @@
+/*------------------------------------*\
+  #IMPORTS
+\*------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&display=swap');
+
+/*------------------------------------*\
+  #VARIABLE-DECLARATION
+\*------------------------------------*/
+
+$primaryColor: hsl(223, 92, 62);
+$highlight: darken($primaryColor, 10%);
+$font: 'Libre Franklin', sans-serif;
+
+/*------------------------------------*\
+  #CSS
+\*------------------------------------*/
+
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1.7fr 1fr;
+    grid-template-rows: 1fr 3fr 3fr;
+    font-family: $font;
+    
+}
+
+.nav {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.timer {
+    position: fixed;
+    top: 2vh;
+    right: 12vw;
+}
+
+a {
+  position: fixed;
+  top: 2vh;
+  left: 2vw;
+  color: $primaryColor;
+}
+
+.quiz, #start-prompt {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    justify-items: center;
+    align-items: start;
+    // grid-template-rows: 1fr 1fr 95%;
+    h3 {
+        line-height: 150%;
+        text-align: center;
+        margin-top: -.5rem;
+    }
+}
+
+#answers {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-row-gap: 1em;
+  .answer-btn {
+    width: fit-content;
+  }
+}
+
+button {
+    color: white;
+    background-color: $primaryColor;
+    border: none;
+    border-radius: 6px;
+    padding: .5em;
+    &:focus {outline: none;}
+    &:hover {cursor: pointer;}
+    &:active {background-color: $highlight;}
+    font-family: $font;
+}
+
+

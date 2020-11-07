@@ -1,0 +1,102 @@
+/*------------------------------------*\
+  #IMPORTS
+\*------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&display=swap");
+/*------------------------------------*\
+  #VARIABLE-DECLARATION
+\*------------------------------------*/
+/*------------------------------------*\
+  #CSS
+\*------------------------------------*/
+.container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1.7fr 1fr;
+      grid-template-columns: 1fr 1.7fr 1fr;
+  -ms-grid-rows: 1fr 3fr 3fr;
+      grid-template-rows: 1fr 3fr 3fr;
+  font-family: "Libre Franklin", sans-serif;
+}
+
+.nav {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 4;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
+  grid-row-end: 2;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+}
+
+.timer {
+  position: fixed;
+  top: 2vh;
+  right: 12vw;
+}
+
+a {
+  position: fixed;
+  top: 2vh;
+  left: 2vw;
+  color: #4577f7;
+}
+
+.quiz, #start-prompt {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
+  grid-column-end: 3;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
+  grid-row-end: 3;
+  display: -ms-grid;
+  display: grid;
+  justify-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+
+.quiz h3, #start-prompt h3 {
+  line-height: 150%;
+  text-align: center;
+  margin-top: -.5rem;
+}
+
+#answers {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto auto auto;
+      grid-template-rows: auto auto auto auto;
+  grid-row-gap: 1em;
+}
+
+#answers .answer-btn {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+button {
+  color: white;
+  background-color: #4577f7;
+  border: none;
+  border-radius: 6px;
+  padding: .5em;
+  font-family: "Libre Franklin", sans-serif;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #1454f5;
+}
+/*# sourceMappingURL=style.css.map */
