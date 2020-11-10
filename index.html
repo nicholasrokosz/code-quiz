@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>JS Quiz</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <main class="container">
       <nav class="nav">
         <a href="leaders.html">Leaderboard</a>
-        <div class="timer">Time: <span id="time">0</span></div>
+        <div class="timer" style="display: block">Time: <span id="time">75</span></div>
       </nav>
       <section class="quiz">
         <div id="start-prompt">
@@ -22,11 +22,16 @@
           </h3>
           <button id="start-btn">Start Quiz</button>
         </div>
-        <div id="qanda-container" style='display:none'>
+        <div id="qanda-container" style='display: none'>
            <h2 id='question-text'>Question placeholder?</h2>
-          <div id="answers">
-            
-          </div>
+          <div id="answers"></div>
+          <p id='right-wrong'></p>
+        </div>
+        <div id="form-container" style='display: none'>
+          <h1>Game Over</h1>
+          <h2>Your final score is: <span id="final-score"></span></h2>
+          <input type="text" id='user-inits'/>
+          <button id='submit-btn'>Submit</button>
         </div>
       </section>
     </main>

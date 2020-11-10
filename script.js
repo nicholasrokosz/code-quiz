@@ -9,8 +9,8 @@ const questions = [
     answers: [
       "The body",
       "The head",
-      "Either the boday or the head",
-      "Neither the boday nor the head",
+      "Either the body or the head",
+      "Neither the body nor the head",
     ],
     correctIndex: 0,
   },
@@ -20,7 +20,7 @@ const questions = [
       'alert("Hello World")',
       'msgBox("Hello World")',
       'msg("Hello World")',
-      'alerBox("Hello World")',
+      'alertBox("Hello World")',
     ],
     correctIndex: 0,
   },
@@ -46,17 +46,47 @@ const questions = [
   },
 ];
 
-let questionIndex = 0;
+ ///////////////////
+// var declarations
 const startBtn = document.querySelector("#start-btn");
 const startPrompt = document.querySelector("#start-prompt");
 const qandaContainer = document.querySelector("#qanda-container");
 const questionText = document.querySelector("#question-text");
 const answerDiv = document.querySelector("#answers");
+const formContainer = document.querySelector('#form-container');
+const submitBtn = document.querySelector('#submit-btn');
+const userInits = document.querySelector('#user-inits');
+const leaderboardEl = document.querySelector('#leaderboard');
+const timeRemaining = document.querySelector('#time');
+const rightWrong = document.querySelector('#right-wrong');
+const timerEl = document.querySelector('.timer');
+const finalScoreEl = document.querySelector('#final-score');
+let score = 0;
+let questionIndex = 0;
+let t = 74;
 
-// registering event handlers
+ //////////////////
+// event listeners
 startBtn.addEventListener("click", handleStartClick);
 answerDiv.addEventListener("click", handleAnswerClick);
+submitBtn.addEventListener('click', e => {
+  e.preventDefault();
+  let user = {
+    initials: userInits.value,
+    score: score
+  }
+  let storedUser = JSON.parse(localStorage.getItem('myScores')) || [];
+  storedUser.push(user);
+  localStorage.setItem('myScores', JSON.stringify(storedUser));
 
+  window.location.replace('leaders.html');
+  // const li = document.createElement('li');
+  // li.textContent = `${storedUser['initials']} — ${storedUser['score']}`;
+  // leaderboardEl.appendChild(li);
+});
+
+ ///////////////////////
+// function definitions
 function handleAnswerClick(e) {
   e.preventDefault();
   if (!e.target.matches("button")) return;
@@ -66,30 +96,40 @@ function handleAnswerClick(e) {
   // retrieve current questions
   const currentQuestion = questions[questionIndex];
   // access correct answer
-  const correctAnswer = currentQuestion.answers[currentQuestion.correctIndex]; // <-- ??????????
+  const correctAnswer = currentQuestion.answers[currentQuestion.correctIndex];
   // compare the answers for equality
   if (userAnswer === correctAnswer) {
-    // if correct, move onto next question
+    // if equal, display 'correct' and move on <--<--<--<--<--<--<--<--<--<-- TODO
+    // const correctMsg = document.createElement('p');
+    // correctMsg.textContent = 'Right!';
+    rightWrong.textContent = 'Right!'
+
+
 
   } else {
-    // else t -= 10 and move on
+    // else t -= 10, display 'wrong', and move on <--<--<--<--<--<--<--<--<-- TODO
+    rightWrong.textContent = 'Wrong! -10s'
+    t -= 10;
 
   }
   questionIndex++;
   // do we have more questions??
-  if (questionIndex === questions.length) { renderScoreForm(); };
-  // else render question
-  renderQuestion();
+  if (questionIndex === questions.length) { renderScoreForm(); 
+  } else {
+    // else render question
+    renderQuestion();
+  }
 }
 
 function handleStartClick(e) {
-  // start timer
+  // start timer <--<--<--<--<--<--<--<--<--<--<--<--<--<--<--<--<--<--<--<-- TODO
   // hide startPrompt
   startPrompt.style.display = "none";
   // display qandaContainer
   qandaContainer.style.display = "block";
 
   renderQuestion();
+  startTimer();
 }
 
 function renderQuestion() {
@@ -114,7 +154,26 @@ function renderQuestion() {
   }
 }
 
+// displays form at game's end
 function renderScoreForm() {
+  score = timeRemaining.textContent;
+  timerEl.style.display = 'none';
+finalScoreEl.textContent = score;
   // clear previous content
-  // add 
+  qandaContainer.style.display = 'none';
+  // display game over score form
+  formContainer.style.display = 'block';
+}
+
+// starts the timer countdown
+function startTimer() {
+  setInterval(() => {
+    if (t >= 0) {
+      timeRemaining.textContent = t;
+      t--;
+    } else {
+    //   clearInterval(startTimer);
+    //   renderScoreForm();
+    }
+  }, 1000);
 }

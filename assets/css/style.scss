@@ -33,19 +33,18 @@ $font: 'Libre Franklin', sans-serif;
     grid-row-end: 2;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    a {
+      position: fixed;
+      top: 2vh;
+      left: 2vw;
+      color: $primaryColor;
+    }
 }
 
 .timer {
     position: fixed;
     top: 2vh;
     right: 12vw;
-}
-
-a {
-  position: fixed;
-  top: 2vh;
-  left: 2vw;
-  color: $primaryColor;
 }
 
 .quiz, #start-prompt {
@@ -83,6 +82,17 @@ button {
     &:hover {cursor: pointer;}
     &:active {background-color: $highlight;}
     font-family: $font;
+}
+
+ol {
+  display: grid;
+  grid-row-gap: .75em;
+  li {
+    background-color: $primaryColor;
+    color: white;
+    padding: .5em;
+    border-radius: 6px;
+  }
 }
 
 

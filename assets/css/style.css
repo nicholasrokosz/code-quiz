@@ -31,17 +31,17 @@
       grid-template-columns: 1fr 1fr 1fr;
 }
 
-.timer {
-  position: fixed;
-  top: 2vh;
-  right: 12vw;
-}
-
-a {
+.nav a {
   position: fixed;
   top: 2vh;
   left: 2vw;
   color: #4577f7;
+}
+
+.timer {
+  position: fixed;
+  top: 2vh;
+  right: 12vw;
 }
 
 .quiz, #start-prompt {
@@ -98,5 +98,18 @@ button:hover {
 
 button:active {
   background-color: #1454f5;
+}
+
+ol {
+  display: -ms-grid;
+  display: grid;
+  grid-row-gap: .75em;
+}
+
+ol li {
+  background-color: #4577f7;
+  color: white;
+  padding: .5em;
+  border-radius: 6px;
 }
 /*# sourceMappingURL=style.css.map */
